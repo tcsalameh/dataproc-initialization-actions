@@ -26,7 +26,7 @@ cat << EOF
  "argv": [
     "/dataproc-initialization-actions/jupyter/kernels/apache_toree_scala/bin/run.sh",
 		"--profile",
-		"{connection_file"]
+		"{connection_file"],
  "display_name": "Apache Toree - Scala",
  "language": "scala",
  "env": {
@@ -35,7 +35,7 @@ cat << EOF
     "__TOREE_OPTS__": "",
 		"__TOREE_SPARK_OPTS__": "",
 		"DEFAULT_INTERPRETER": "Scala",
-		"PYTHONPATH": "/usr/lib/spark/python/:${PY4J_ZIP}",
+		"PYTHONPATH": "/usr/lib/spark/python/:${PY4J_ZIP}"
  }
 }
 EOF
