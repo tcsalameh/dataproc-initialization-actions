@@ -23,19 +23,19 @@ PACKAGES_ARG='--packages com.databricks:spark-csv_2.10:1.3.0'
 
 cat << EOF
 {
- "argv": [
+  "argv": [
     "/dataproc-initialization-actions/jupyter/kernels/apache_toree_scala/bin/run.sh",
-		"--profile",
-		"{connection_file"],
- "display_name": "Apache Toree - Scala",
- "language": "scala",
- "env": {
+    "--profile",
+    "{connection_file}"],
+  "display_name": "Apache Toree - Scala",
+  "language": "scala",
+  "env": {
     "PYTHON_EXEC": "python",
-		"SPARK_HOME": "/usr/lib/spark",
+    "SPARK_HOME": "/usr/lib/spark/",
     "__TOREE_OPTS__": "",
-		"__TOREE_SPARK_OPTS__": "",
-		"DEFAULT_INTERPRETER": "Scala",
-		"PYTHONPATH": "/usr/lib/spark/python/:${PY4J_ZIP}"
- }
+    "__TOREE_SPARK_OPTS__": "",
+    "DEFAULT_INTERPRETER": "Scala",
+    "PYTHONPATH": "/usr/lib/spark/python/:${PY4J_ZIP}"
+  }
 }
 EOF
