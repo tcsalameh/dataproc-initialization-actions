@@ -33,5 +33,20 @@ ${KERNEL_GENERATOR} > "${JUPYTER_KERNEL_DIR}/kernel.json"
 jupyter kernelspec install $JUPYTER_KERNEL_DIR
 echo "c.MappingKernelManager.default_kernel_name = 'pyspark'" >> ~/.jupyter/jupyter_notebook_config.py
 
+# Right now, Toree only works well with 1.6
+SPARK_MAJOR_VERSION=$(spark-submit --version |& \
+    grep 'version' | head -n 1 | sed 's/.*version //' | cut -d '.' -f 1)
+echo "Determined SPARK_MAJOR_VERSION to be '${SPARK_MAJOR_VERSION}'" >&2
+
+if (( "${SPARK_MAJOR_VERSION}" < 2 )); then
+  echo "Installing Apache Toree Kernel..."
+  JUPYTER_KERNEL_DIR='/dataproc-initialization-actions/jupyter/kernels/apache_toree_scala'
+  KERNEL_GENERATOR='/dataproc-initialization-actions/jupyter/kernels/generate_toree.sh'
+  chmod 750 ${KERNEL_GENERATOR}
+  mkdir -p ${JUPYTER_KERNEL_DIR}
+  ${KERNEL_GENERATOR} > "${JUPYTER_KERNEL_DIR}/kernel.json"
+  jupyter kernelspec install $JUPYTER_KERNEL_DIR
+fi
+
 echo "Jupyter setup!"
 
