@@ -40,8 +40,8 @@ echo "Determined SPARK_MAJOR_VERSION to be '${SPARK_MAJOR_VERSION}'" >&2
 
 if (( "${SPARK_MAJOR_VERSION}" < 2 )); then
   echo "Installing Apache Toree Kernel..."
-  pip install toree
-  jupyter toree install --spark-home="/usr/lib/spark/"
+  pip install toree &&
+  jupyter toree install --spark_home="/usr/lib/spark/"
 fi
 
 echo "Jupyter setup!"
